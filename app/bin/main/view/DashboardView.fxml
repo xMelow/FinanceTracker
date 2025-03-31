@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import financetracker.controller.TransactionController?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
-    <children>
-        <TextField fx:id="descriptionField" layoutX="20" layoutY="20" promptText="Description" />
-        <TextField fx:id="amountField" layoutX="20" layoutY="60" promptText="Amount" />
-        <Button text="Add Transaction" layoutX="20" layoutY="100" onAction="#addTransaction" />
-        <ListView fx:id="transactionListView" layoutX="20" layoutY="140" prefHeight="200" prefWidth="300"/>
-    </children>
-</AnchorPane>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
+    <center>
+        <HBox spacing="10" alignment="CENTER">
+
+            <!-- Add Transaction Section -->
+            <VBox spacing="10">
+                <Label text="Add Transaction" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="amountField" promptText="Amount"/>
+                <ComboBox fx:id="categoryComboBox"/>
+                <TextField fx:id="descriptionField" promptText="Description"/>
+                <Button text="Add" fx:id="addButton" onAction="#addTransaction"/>
+            </VBox>
+            
+            <!-- Totals Section -->
+            <VBox spacing="10">
+                <Label text="Totals" style="-fx-font-weight: bold;"/>
+                <Label text="Total spend amount:"/>
+                <Label fx:id="totalAmountLabel" text="0.00"/>
+                <Label text="Spending per category:"/>
+                <ListView fx:id="spendingCategoryList"/>
+            </VBox>
+            
+            <!-- Recent Transactions Section -->
+            <VBox spacing="10">
+                <Label text="Recent Added Transactions" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="transactionTableView">
+                    <columns>
+                        <TableColumn text="Transactions" fx:id="transactionsColumn"/>
+                    </columns>
+                </TableView>
+                <Button text="Sort Transactions" fx:id="sortButton"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
+

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import financetracker.controller.TransactionController;
@@ -14,7 +15,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashboardView.fxml"));
-        AnchorPane root = loader.load();
+        BorderPane root = loader.load();
         
         TransactionRepository transactionRepository = new TransactionRepository();
         TransactionService transactionService = new TransactionService(transactionRepository);
