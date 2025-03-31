@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import financetracker.controller.TransactionController?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
+    <children>
+        <TextField fx:id="descriptionField" layoutX="20" layoutY="20" promptText="Description" />
+        <TextField fx:id="amountField" layoutX="20" layoutY="60" promptText="Amount" />
+        <Button text="Add Transaction" layoutX="20" layoutY="100" onAction="#addTransaction" />
+        <ListView fx:id="transactionListView" layoutX="20" layoutY="140" prefHeight="200" prefWidth="300"/>
+    </children>
+</AnchorPane>
