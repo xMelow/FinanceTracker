@@ -20,7 +20,7 @@
             <VBox spacing="10">
                 <Label text="Totals" style="-fx-font-weight: bold;"/>
                 <Label text="Total spend amount:"/>
-                <Label fx:id="totalAmountLabel" text="0.00"/>
+                <Label fx:id="totalAmountLabel" text="€ 0.00"/>
                 <Label text="Spending per category:"/>
                 <ListView fx:id="spendingCategoryList"/>
             </VBox>

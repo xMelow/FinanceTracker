@@ -64,9 +64,15 @@ public class TransactionController {
         transactionTableView.getItems().add(transaction);
         transactionService.addTransaction(transaction);
 
-        double currentTotal = Double.parseDouble(totalAmountLabel.getText());
+        double currentTotal = 0.0;
+        try {
+            currentTotal = Double.parseDouble(totalAmountLabel.getText().replace("€", "").trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Warning: Invalid number format in totalAmountLabel. Resetting to 0.");
+        }
+
         currentTotal += amount;
-        totalAmountLabel.setText(String.format("%.2f", currentTotal));
+        totalAmountLabel.setText(String.format("€ %.2f", currentTotal));
     }
 
     @FXML
