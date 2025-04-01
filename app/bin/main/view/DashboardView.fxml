@@ -30,7 +30,9 @@
                 <Label text="Recent Added Transactions" style="-fx-font-weight: bold;"/>
                 <TableView fx:id="transactionTableView">
                     <columns>
-                        <TableColumn text="Transactions" fx:id="transactionsColumn"/>
+                        <TableColumn text="Description" fx:id="descriptionColumn"/>
+                        <TableColumn text="Amount" fx:id="amountColumn" />
+                        <TableColumn text="Category" fx:id="categoryColumn" />
                     </columns>
                 </TableView>
                 <Button text="Sort Transactions" fx:id="sortButton"/>
