@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import financetracker.controller.TransactionController?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
-    <center>
-        <HBox spacing="10" alignment="CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
-            <!-- Add Transaction Section -->
-            <VBox spacing="10">
-                <Label text="Add Transaction" style="-fx-font-weight: bold;"/>
-                <TextField fx:id="amountField" promptText="Amount"/>
+    <center>
+        <HBox spacing="20" alignment="TOP_CENTER">
+            
+            <!-- Section: Add Transaction -->
+            <VBox spacing="10" prefWidth="180">
+                <Label text="Add Transaction" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="amountField" promptText="Enter amount"/>
                 <ComboBox fx:id="categoryComboBox"/>
-                <TextField fx:id="descriptionField" promptText="Description"/>
-                <Button text="Add" fx:id="addButton" onAction="#addTransaction"/>
+                <TextField fx:id="descriptionField" promptText="Enter description"/>
+                <Button text="Add" onAction="#addTransaction"/>
             </VBox>
-            
-            <!-- Totals Section -->
+
+            <Separator orientation="VERTICAL"/>
+
             <VBox spacing="10">
-                <Label text="Totals" style="-fx-font-weight: bold;"/>
+                <Label text="Totals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
                 <Label text="Total spend amount:"/>
-                <Label fx:id="totalAmountLabel" text="€ 0.00"/>
+                <Label fx:id="totalAmountLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                
                 <Label text="Spending per category:"/>
-                <ListView fx:id="spendingCategoryList"/>
-            </VBox>
-            
-            <!-- Recent Transactions Section -->
-            <VBox spacing="10">
-                <Label text="Recent Added Transactions" style="-fx-font-weight: bold;"/>
-                <TableView fx:id="transactionTableView">
+                <TableView fx:id="categorySpendingTableView" prefHeight="180" prefWidth="220">
                     <columns>
-                        <TableColumn text="Description" fx:id="descriptionColumn"/>
-                        <TableColumn text="Amount" fx:id="amountColumn" />
-                        <TableColumn text="Category" fx:id="categoryColumn" />
+                        <TableColumn fx:id="categoryNameColumn" text="Name" prefWidth="100"/>
+                        <TableColumn fx:id="categoryAmountColumn" text="Amount" prefWidth="100"/>
                     </columns>
                 </TableView>
-                <Button text="Sort Transactions" fx:id="sortButton"/>
             </VBox>
+
+            <Separator orientation="VERTICAL"/>
+
+            <VBox spacing="10">
+                <Label text="Recent Added Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="recentTransactionTableView" prefHeight="200" prefWidth="350">
+                    <columns>
+                        <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
+                        <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>
+                        <TableColumn fx:id="recentCategoryColumn" text="Category" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <Separator orientation="VERTICAL"/>
+
+            <VBox spacing="10" alignment="TOP_LEFT">
+                <Label text="Sort by" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <RadioButton fx:id="nameRadio" text="Name"/>
+                <RadioButton fx:id="amountRadio" text="Amount"/>
+                <RadioButton fx:id="categoryRadio" text="Category"/>
+                <!-- <Button text="Sort Transactions" onAction="#sortTransactions"/> -->
+            </VBox>
+
         </HBox>
     </center>
-</BorderPane>
 
+</BorderPane>
