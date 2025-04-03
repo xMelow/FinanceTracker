@@ -1,6 +1,7 @@
 package financetracker.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -20,6 +21,8 @@ import javafx.scene.control.*;
 
 public class TransactionController {
     private static int transactionIdCounter = 0;
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
     private TransactionService transactionService;
 
     // UI Elements
@@ -35,6 +38,7 @@ public class TransactionController {
     @FXML private TableColumn<Transaction, String> recentDescriptionColumn;
     @FXML private TableColumn<Transaction, String> recentAmountColumn;
     @FXML private TableColumn<Transaction, String> recentCategoryColumn;
+    @FXML private TableColumn<Transaction, String> recentDateColumn;
 
     @FXML private ComboBox<String> categoryComboBox;
 
@@ -85,6 +89,10 @@ public class TransactionController {
 
         recentCategoryColumn.setCellValueFactory(cellData -> 
             new SimpleStringProperty(cellData.getValue().getCategory())
+        );
+
+        recentDateColumn.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(cellData.getValue().getDate().format(DATE_FORMATTER))
         );
     }
 

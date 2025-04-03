@@ -11,12 +11,20 @@
     <center>
         <HBox spacing="20" alignment="TOP_CENTER">
             
-            <!-- Section: Add Transaction -->
             <VBox spacing="10" prefWidth="180">
                 <Label text="Add Transaction" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <Separator orientation="HORIZONTAL"/>
+
+                <Label text="Amount: "/>
                 <TextField fx:id="amountField" promptText="Enter amount"/>
+
+                <Label text="Category: "/>
                 <ComboBox fx:id="categoryComboBox"/>
+                
+                <Label text="Description: "/>
                 <TextField fx:id="descriptionField" promptText="Enter description"/>
+
                 <Button text="Add" onAction="#addTransaction"/>
             </VBox>
 
@@ -24,8 +32,14 @@
 
             <VBox spacing="10">
                 <Label text="Totals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <Label text="Total spend amount:"/>
+
+                <Separator orientation="HORIZONTAL"/>
+
+                <Label text="Total spend:"/>
                 <Label fx:id="totalAmountLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+                <Label text="Total spend this month:"/>
+                <Label fx:id="totalAmountMonthLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
                 
                 <Label text="Spending per category:"/>
                 <TableView fx:id="categorySpendingTableView" prefHeight="180" prefWidth="220">
@@ -40,11 +54,15 @@
 
             <VBox spacing="10">
                 <Label text="Recent Added Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <TableView fx:id="recentTransactionTableView" prefHeight="200" prefWidth="350">
+
+                <Separator orientation="HORIZONTAL"/>
+
+                <TableView fx:id="recentTransactionTableView" prefHeight="200" prefWidth="460">
                     <columns>
                         <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
                         <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>
                         <TableColumn fx:id="recentCategoryColumn" text="Category" prefWidth="100"/>
+                        <TableColumn fx:id="recentDateColumn" text="Date" prefWidth="100"/>
                     </columns>
                 </TableView>
             </VBox>
@@ -54,9 +72,12 @@
             <VBox spacing="10" alignment="TOP_LEFT">
                 <Label text="Sort by" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
 
-                <RadioButton fx:id="nameRadio" text="Name"/>
+                <Separator orientation="HORIZONTAL"/>
+
+                <RadioButton fx:id="nameRadio" text="Description"/>
                 <RadioButton fx:id="amountRadio" text="Amount"/>
                 <RadioButton fx:id="categoryRadio" text="Category"/>
+                <RadioButton fx:id="dateRadio" text="Date"/>
                 <!-- <Button text="Sort Transactions" onAction="#sortTransactions"/> -->
             </VBox>
 
