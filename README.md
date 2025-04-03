@@ -8,6 +8,10 @@ This is a low level wireframe just to give a broad idea.
 
 ![wireframe](/app/src/main/resources/images/lowQualityWirframe.png)
 
+## Preview
+
+![Preview](/app/src/main/resources/images/AppPreview.png)
+
 ## ToDo
 
 - [ ] Total spend this month
@@ -21,4 +25,3 @@ This is a low level wireframe just to give a broad idea.
 - [ ] Spending charts
 - [ ] Tests
 - [ ] Readme file
-- [ ] 
