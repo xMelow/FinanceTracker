@@ -25,6 +25,9 @@
                 <Label text="Description: "/>
                 <TextField fx:id="descriptionField" promptText="Enter description"/>
 
+                <Label text="Date: "/>
+                <DatePicker fx:id="dateField" promptText="Enter Date"/>
+
                 <Button text="Add" onAction="#addTransaction"/>
             </VBox>
 
@@ -66,21 +69,6 @@
                     </columns>
                 </TableView>
             </VBox>
-
-            <Separator orientation="VERTICAL"/>
-
-            <VBox spacing="10" alignment="TOP_LEFT">
-                <Label text="Sort by" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-                <Separator orientation="HORIZONTAL"/>
-
-                <RadioButton fx:id="nameRadio" text="Description"/>
-                <RadioButton fx:id="amountRadio" text="Amount"/>
-                <RadioButton fx:id="categoryRadio" text="Category"/>
-                <RadioButton fx:id="dateRadio" text="Date"/>
-                <!-- <Button text="Sort Transactions" onAction="#sortTransactions"/> -->
-            </VBox>
-
         </HBox>
     </center>
 
