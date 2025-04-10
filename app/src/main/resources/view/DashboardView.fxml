@@ -56,11 +56,11 @@
             <Separator orientation="VERTICAL"/>
 
             <VBox spacing="10">
-                <Label text="Recent Added Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Recent Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
 
                 <Separator orientation="HORIZONTAL"/>
 
-                <TableView fx:id="recentTransactionTableView" prefHeight="200" prefWidth="460">
+                <TableView fx:id="recentTransactionTableView" prefHeight="350" prefWidth="460">
                     <columns>
                         <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
                         <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>

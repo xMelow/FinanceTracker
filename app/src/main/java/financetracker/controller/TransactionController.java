@@ -59,7 +59,7 @@ public class TransactionController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() {        
         setupComboBox();
         setupRecentTransactions();
         setupCategorySpending();
@@ -94,9 +94,18 @@ public class TransactionController {
             new SimpleStringProperty(cellData.getValue().getCategory())
         );
 
-        recentDateColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getDate().format(DATE_FORMATTER))
-        );
+        recentDateColumn.setCellValueFactory(cellData -> {
+            LocalDate date = cellData.getValue().getDate();
+
+            String formattedDate;
+            if (date != null) {
+                formattedDate = date.format(DATE_FORMATTER);
+            } else {
+                formattedDate = LocalDate.now().format(DATE_FORMATTER);
+            }
+
+            return new SimpleStringProperty(formattedDate);
+        });
     }
 
     @FXML
@@ -147,6 +156,9 @@ public class TransactionController {
     }
 
     private void updateTotalAmount(double amount, LocalDate date) {
+        if (date == null) {
+            date = LocalDate.now();
+        }
         Month currentDateMonth = LocalDate.now().getMonth();
         totalAmount.set(totalAmount.get() + amount);
         if (currentDateMonth == date.getMonth()) {

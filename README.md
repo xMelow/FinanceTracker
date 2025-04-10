@@ -14,7 +14,6 @@ This is a low level wireframe just to give a broad idea.
 
 ## ToDo
 
-- [ ] Total spend this month
 - [ ] Edit recent transactions 
 - [ ] Connect to storage system (database, file, etc?)
 - [ ] Spending charts

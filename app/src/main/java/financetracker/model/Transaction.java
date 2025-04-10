@@ -9,6 +9,10 @@ public class Transaction {
     private String category;
     private String description;
 
+    public Transaction() {
+        this.date = LocalDate.now();
+    }
+
     public Transaction(int id, double amount, LocalDate date, String category, String description) {
         this.id = id;
         this.amount = amount;
