@@ -30,7 +30,7 @@ public class TransactionRepository {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             gson.toJson(transactions, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("error while saving Transactions");
         }
     }
 

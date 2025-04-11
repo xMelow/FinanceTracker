@@ -3,8 +3,7 @@ package financetracker.controller;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.List;
 
 import financetracker.model.Category;
 import financetracker.model.CategorySpending;
@@ -24,7 +23,6 @@ public class TransactionController {
     //Extra
     private static int transactionIdCounter = 0;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
     private TransactionService transactionService;
 
     // UI Elements
@@ -59,11 +57,28 @@ public class TransactionController {
     }
 
     @FXML
-    public void initialize() {        
+    public void initialze() {
+        // run
+    }
+
+    @FXML
+    public void initAfterInject() {
+        loadTransactions();
         setupComboBox();
         setupRecentTransactions();
         setupCategorySpending();
         setupTotals();
+    }
+
+    @FXML
+    private void loadTransactions() {
+        List<Transaction> transactions = transactionService.getTransactions();
+
+        for (Transaction transaction : transactions) {
+            recentTransactionTableView.getItems().add(transaction);
+            updateTotalAmount(transaction.getAmount(), transaction.getDate());
+            updateSpendingPerCategory(transaction.getCategory(), transaction.getAmount());
+        }
     }
 
     @FXML
@@ -148,9 +163,9 @@ public class TransactionController {
         String category = categoryComboBox.getValue();
         Transaction transaction = new Transaction(transactionIdCounter++, amount, date, category, description);
         
-        recentTransactionTableView.getItems().add(transaction);
         transactionService.addTransaction(transaction);
 
+        recentTransactionTableView.getItems().add(transaction);
         updateTotalAmount(amount, transaction.getDate());
         updateSpendingPerCategory(category, amount);
     }

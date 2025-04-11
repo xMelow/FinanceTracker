@@ -3,73 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
+<TabPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
+
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets top="0" right="20" bottom="20" left="20"/>
     </padding>
 
-    <center>
-        <HBox spacing="20" alignment="TOP_CENTER">
-            
-            <VBox spacing="10" prefWidth="180">
-                <Label text="Add Transaction" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <Tab text="Dashboard" closable="false">
+        <fx:include fx:id="transactionView" source="TransactionView.fxml"/>
+    </Tab>
 
-                <Separator orientation="HORIZONTAL"/>
+    <Tab text="Charts" closable="false">
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="Charts will come here"/>
+        </VBox>
+    </Tab>
 
-                <Label text="Amount: "/>
-                <TextField fx:id="amountField" promptText="Enter amount"/>
-
-                <Label text="Category: "/>
-                <ComboBox fx:id="categoryComboBox"/>
-                
-                <Label text="Description: "/>
-                <TextField fx:id="descriptionField" promptText="Enter description"/>
-
-                <Label text="Date: "/>
-                <DatePicker fx:id="dateField" promptText="Enter Date"/>
-
-                <Button text="Add" onAction="#addTransaction"/>
-            </VBox>
-
-            <Separator orientation="VERTICAL"/>
-
-            <VBox spacing="10">
-                <Label text="Totals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-                <Separator orientation="HORIZONTAL"/>
-
-                <Label text="Total spend:"/>
-                <Label fx:id="totalAmountLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-
-                <Label text="Total spend this month:"/>
-                <Label fx:id="totalAmountMonthLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-                
-                <Label text="Spending per category:"/>
-                <TableView fx:id="categorySpendingTableView" prefHeight="180" prefWidth="220">
-                    <columns>
-                        <TableColumn fx:id="categoryNameColumn" text="Name" prefWidth="100"/>
-                        <TableColumn fx:id="categoryAmountColumn" text="Amount" prefWidth="100"/>
-                    </columns>
-                </TableView>
-            </VBox>
-
-            <Separator orientation="VERTICAL"/>
-
-            <VBox spacing="10">
-                <Label text="Recent Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-                <Separator orientation="HORIZONTAL"/>
-
-                <TableView fx:id="recentTransactionTableView" prefHeight="350" prefWidth="460">
-                    <columns>
-                        <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
-                        <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>
-                        <TableColumn fx:id="recentCategoryColumn" text="Category" prefWidth="100"/>
-                        <TableColumn fx:id="recentDateColumn" text="Date" prefWidth="100"/>
-                    </columns>
-                </TableView>
-            </VBox>
-        </HBox>
-    </center>
-
-</BorderPane>
+    <Tab text="Settings" closable="false">
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="Settings will go here"/>
+        </VBox>
+    </Tab>
+</TabPane>

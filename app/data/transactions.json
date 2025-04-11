@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "amount": 100.0,
+    "date": "11-04-2025",
+    "category": "SPORT",
+    "description": "pants"
+  },
+  {
+    "id": 1,
+    "amount": 50.0,
+    "date": "05-03-2025",
+    "category": "GOING_OUT",
+    "description": "rave"
+  },
+  {
+    "id": 2,
+    "amount": 50.0,
+    "date": "20-04-2025",
+    "category": "GOING_OUT",
+    "description": "rave"
+  }
+]
