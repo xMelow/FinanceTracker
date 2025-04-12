@@ -26,4 +26,9 @@ public class Transaction {
     public LocalDate getDate() { return date; }
     public String getCategory() { return category; }
     public String getDescription() { return description; }
+
+    public void setAmount(double amount) { this.amount = amount; }
+    public void setDate(LocalDate date) { this.date = date; }
+    public void setCategory(String category) {this.category = category; }
+    public void setDescription(String description) {this.description = description;}
 }
