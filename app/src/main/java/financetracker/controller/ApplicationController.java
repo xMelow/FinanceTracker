@@ -17,9 +17,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 
-public class TransactionController {
+public class ApplicationController {
     //Extra
     private static int transactionIdCounter = 0;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -45,6 +48,9 @@ public class TransactionController {
 
     @FXML private ComboBox<String> categoryComboBox;
 
+    @FXML private PieChart pieChart;
+    // @FXML private BarChart<String, Number> barChart;
+
     // Data storage
     private final ObservableMap<String, CategorySpending> categorySpendingMap = FXCollections.observableHashMap();
     private final ObservableList<CategorySpending> categorySpendingList = FXCollections.observableArrayList();
@@ -53,12 +59,12 @@ public class TransactionController {
     private final DoubleProperty totalMonthAmount = new SimpleDoubleProperty(0.0);
 
     public void setTransactionService(TransactionService transactionService) {
-        this.transactionService = transactionService;
+        this.transactionService = transactionService;   
     }
 
     @FXML
     public void initialze() {
-        // run
+        //run!
     }
 
     @FXML
@@ -68,6 +74,8 @@ public class TransactionController {
         setupRecentTransactions();
         setupCategorySpending();
         setupTotals();
+        setupPieChart();
+        // setupBarChart();
     }
 
     @FXML
@@ -146,6 +154,33 @@ public class TransactionController {
             String.format("€ %.2f", totalMonthAmount.get()), totalMonthAmount)
         );
     }
+
+    @FXML
+    private void setupPieChart() {
+        List<CategorySpending> categorySpendings = categorySpendingTableView.getItems();
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        for (CategorySpending cs : categorySpendings) {
+            pieChartData.add(new PieChart.Data(cs.getCategory(), cs.getAmount()));
+        }
+
+        pieChart.setData(pieChartData);
+        pieChart.setTitle("Spending per category");
+    }
+
+    // @FXML
+    // private void setupBarChart() {
+    //     XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+    //     series.getData().add(new XYChart.Data<>("January", 300));
+    //     series.getData().add(new XYChart.Data<>("February", 450));
+    //     series.getData().add(new XYChart.Data<>("March", 370));
+    //     series.getData().add(new XYChart.Data<>("April", 520));
+    //     series.getData().add(new XYChart.Data<>("May", 410));
+
+    //     barChart.getData().add(series);
+    //     barChart.setTitle("Monthly Spending");
+    // }
 
     @FXML
     private void addTransaction() {

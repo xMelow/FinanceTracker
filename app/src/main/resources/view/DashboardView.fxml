@@ -2,8 +2,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 
-<TabPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.TransactionController">
+<TabPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="financetracker.controller.ApplicationController">
 
     <padding>
         <Insets top="0" right="20" bottom="20" left="20"/>
@@ -75,14 +79,23 @@
     </Tab>
 
     <Tab text="Charts" closable="false">
-        <VBox spacing="10" alignment="CENTER">
-            <Label text="Charts will come here"/>
-        </VBox>
+        <Button text="refresh Chart Data" fx:id="refreshChartData"/>
+        <HBox spacing="10" alignment="CENTER">
+            <PieChart fx:id="pieChart" prefWidth="600" prefHeight="200"/>
+            <!-- <BarChart fx:id="barChart" prefWidth="600" prefHeight="200">
+                <xAxis>
+                    <CategoryAxis label="Month"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Total Spent (€)"/>
+                </yAxis>
+            </BarChart> -->
+        </HBox>
     </Tab>
 
     <Tab text="Settings" closable="false">
         <VBox spacing="10" alignment="CENTER">
-            <Label text="Settings will go here"/>
+            <Label text="Settings comming soon..."/>
         </VBox>
-    </Tab>
+    </Tab>    
 </TabPane>

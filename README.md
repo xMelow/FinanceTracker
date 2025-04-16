@@ -14,6 +14,7 @@ This is a low level wireframe just to give a broad idea.
 
 ## ToDo
 
+- [ ] spending per month
 - [ ] Edit recent transactions 
 - [ ] Spending charts
 - [ ] Tests

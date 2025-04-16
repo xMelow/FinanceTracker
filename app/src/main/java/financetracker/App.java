@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import financetracker.controller.TransactionController;
+import financetracker.controller.ApplicationController;
 import financetracker.repository.TransactionRepository;
 import financetracker.service.TransactionService;
 
@@ -19,7 +19,7 @@ public class App extends Application {
         TransactionRepository transactionRepository = new TransactionRepository();
         TransactionService transactionService = new TransactionService(transactionRepository);
         
-        TransactionController controller = loader.getController();
+        ApplicationController controller = loader.getController();
         controller.setTransactionService(transactionService);
         controller.initAfterInject();
         

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class TransactionRepository {
     private static final String FILE_PATH = "data/transactions.json";
+
     private final Gson gson = new GsonBuilder()
         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
         .setPrettyPrinting()

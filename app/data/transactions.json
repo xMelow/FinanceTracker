@@ -19,5 +19,32 @@
     "date": "20-04-2025",
     "category": "GOING_OUT",
     "description": "rave"
+  },
+  {
+    "id": 0,
+    "amount": 50.0,
+    "date": "13-04-2025",
+    "category": "SPORT",
+    "description": "delhaize"
+  },
+  {
+    "id": 1,
+    "amount": 50.0,
+    "date": "13-04-2025",
+    "category": "FOOD",
+    "description": "delhaize"
+  },
+  {
+    "id": 0,
+    "amount": 15.0,
+    "date": "16-04-2025",
+    "category": "SPORT",
+    "description": "pants"
+  },
+  {
+    "id": 0,
+    "amount": 2.5,
+    "category": "TRANSPORT",
+    "description": "Bus"
   }
 ]
