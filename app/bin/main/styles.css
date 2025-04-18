@@ -1,1 +1,57 @@
+.main-container {
+    -fx-padding: 0; 
+    -fx-spacing: 40px;
+}
 
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.text-field, .date-picker, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 6px;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 120px;
+    -fx-tab-max-width: 120px;
+}
+
+.tab:selected {
+    -fx-background-color: #d0e6ff;
+}
+
+.tab-label {
+    -fx-font-weight: bold;
+}
+
+.add-section {
+    -fx-alignment: top-left; 
+    -fx-padding: 0; 
+    -fx-spacing: 10px;
+}
+
+.dashboard-root {
+    -fx-padding: 30px 0px 30px 0px; 
+    -fx-background-color: white;
+}
+
+.dashboard-content {
+    -fx-pref-width: 100%;
+}
+
+.add-transaction-box {
+    -fx-alignment: top-left;
+    -fx-padding: 0;
+    -fx-spacing: 10px;
+}

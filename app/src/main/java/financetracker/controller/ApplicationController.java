@@ -180,7 +180,6 @@ public class ApplicationController {
 
         LocalDate date = LocalDate.now();
         series.setName(String.format("%d", date.getYear()));
-        System.out.println(spendingPerMonth);
 
         for (Month month : Month.values()) {
             double amount = spendingPerMonth.getOrDefault(month, 0.0);

@@ -14,68 +14,65 @@
     </padding>
 
     <Tab text="Dashboard" closable="false">
-        <HBox spacing="20" alignment="TOP_CENTER">
+        <VBox styleClass="dashboard-root" prefHeight="200" prefWidth="500">
+            <HBox spacing="20" alignment="TOP_CENTER" >
+                <VBox spacing="10" prefWidth="180">
+                    <Label text="Add Transaction" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Separator orientation="HORIZONTAL"/>
 
-            <padding>
-                <Insets top="0" right="20" bottom="20" left="20"/>
-            </padding>
+                    <Label text="Amount:"/>
+                    <TextField fx:id="amountField" promptText="Enter amount"/>
 
-            <VBox spacing="10" prefWidth="180">
-                <Label text="Add Transaction" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <Separator orientation="HORIZONTAL"/>
+                    <Label text="Category:"/>
+                    <ComboBox fx:id="categoryComboBox"/>
 
-                <Label text="Amount:"/>
-                <TextField fx:id="amountField" promptText="Enter amount"/>
+                    <Label text="Description:"/>
+                    <TextField fx:id="descriptionField" promptText="Enter description"/>
 
-                <Label text="Category:"/>
-                <ComboBox fx:id="categoryComboBox"/>
+                    <Label text="Date:"/>
+                    <DatePicker fx:id="dateField" promptText="Enter Date"/>
 
-                <Label text="Description:"/>
-                <TextField fx:id="descriptionField" promptText="Enter description"/>
+                    <Button text="Add" onAction="#addTransaction"/>
+                </VBox>
 
-                <Label text="Date:"/>
-                <DatePicker fx:id="dateField" promptText="Enter Date"/>
+                <Separator orientation="VERTICAL"/>
 
-                <Button text="Add" onAction="#addTransaction"/>
-            </VBox>
+                <VBox spacing="10">
+                    <Label text="Totals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Separator orientation="HORIZONTAL"/>
 
-            <Separator orientation="VERTICAL"/>
+                    <Label text="Total spend:"/>
+                    <Label fx:id="totalAmountLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
 
-            <VBox spacing="10">
-                <Label text="Totals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <Separator orientation="HORIZONTAL"/>
+                    <Label text="Total spend this month:"/>
+                    <Label fx:id="totalAmountMonthLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
 
-                <Label text="Total spend:"/>
-                <Label fx:id="totalAmountLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Label text="Spending per category:"/>
+                    <TableView fx:id="categorySpendingTableView" prefHeight="180" prefWidth="220">
+                        <columns>
+                            <TableColumn fx:id="categoryNameColumn" text="Name" prefWidth="100"/>
+                            <TableColumn fx:id="categoryAmountColumn" text="Amount" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
 
-                <Label text="Total spend this month:"/>
-                <Label fx:id="totalAmountMonthLabel" text="€ 0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Separator orientation="VERTICAL"/>
 
-                <Label text="Spending per category:"/>
-                <TableView fx:id="categorySpendingTableView" prefHeight="180" prefWidth="220">
-                    <columns>
-                        <TableColumn fx:id="categoryNameColumn" text="Name" prefWidth="100"/>
-                        <TableColumn fx:id="categoryAmountColumn" text="Amount" prefWidth="100"/>
-                    </columns>
-                </TableView>
-            </VBox>
+                <VBox spacing="10">
+                    <Label text="Recent Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Separator orientation="HORIZONTAL"/>
 
-            <Separator orientation="VERTICAL"/>
-
-            <VBox spacing="10">
-                <Label text="Recent Transactions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <Separator orientation="HORIZONTAL"/>
-
-                <TableView fx:id="recentTransactionTableView" prefHeight="350" prefWidth="460">
-                    <columns>
-                        <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
-                        <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>
-                        <TableColumn fx:id="recentCategoryColumn" text="Category" prefWidth="100"/>
-                        <TableColumn fx:id="recentDateColumn" text="Date" prefWidth="100"/>
-                    </columns>
-                </TableView>
-            </VBox>
-        </HBox>
+                    <TableView fx:id="recentTransactionTableView" prefHeight="350" prefWidth="460">
+                        <columns>
+                            <TableColumn fx:id="recentDescriptionColumn" text="Description" prefWidth="150"/>
+                            <TableColumn fx:id="recentAmountColumn" text="Amount" prefWidth="100"/>
+                            <TableColumn fx:id="recentCategoryColumn" text="Category" prefWidth="100"/>
+                            <TableColumn fx:id="recentDateColumn" text="Date" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </VBox>
     </Tab>
 
     <Tab text="Charts" closable="false">

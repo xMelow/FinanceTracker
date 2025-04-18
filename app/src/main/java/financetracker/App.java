@@ -24,6 +24,7 @@ public class App extends Application {
         controller.initAfterInject();
         
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setTitle("Finance Tracker");
         primaryStage.setScene(scene);
         primaryStage.show();
