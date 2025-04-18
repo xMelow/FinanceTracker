@@ -3,7 +3,10 @@ package financetracker.controller;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import financetracker.model.Category;
 import financetracker.model.CategorySpending;
@@ -26,6 +29,7 @@ public class ApplicationController {
     //Extra
     private static int transactionIdCounter = 0;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
     private TransactionService transactionService;
 
     // UI Elements
@@ -49,11 +53,12 @@ public class ApplicationController {
     @FXML private ComboBox<String> categoryComboBox;
 
     @FXML private PieChart pieChart;
-    // @FXML private BarChart<String, Number> barChart;
+    @FXML private BarChart<String, Number> barChart;
 
     // Data storage
     private final ObservableMap<String, CategorySpending> categorySpendingMap = FXCollections.observableHashMap();
     private final ObservableList<CategorySpending> categorySpendingList = FXCollections.observableArrayList();
+    private HashMap<Month, Double> spendingPerMonth = new HashMap<>();
 
     private final DoubleProperty totalAmount = new SimpleDoubleProperty(0.0);
     private final DoubleProperty totalMonthAmount = new SimpleDoubleProperty(0.0);
@@ -75,7 +80,7 @@ public class ApplicationController {
         setupCategorySpending();
         setupTotals();
         setupPieChart();
-        // setupBarChart();
+        setupBarChart();
     }
 
     @FXML
@@ -86,6 +91,7 @@ public class ApplicationController {
             recentTransactionTableView.getItems().add(transaction);
             updateTotalAmount(transaction.getAmount(), transaction.getDate());
             updateSpendingPerCategory(transaction.getCategory(), transaction.getAmount());
+            updateSpendingPerMonth(transaction);
         }
     }
 
@@ -168,19 +174,23 @@ public class ApplicationController {
         pieChart.setTitle("Spending per category");
     }
 
-    // @FXML
-    // private void setupBarChart() {
-    //     XYChart.Series<String, Number> series = new XYChart.Series<>();
+    @FXML
+    private void setupBarChart() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
 
-    //     series.getData().add(new XYChart.Data<>("January", 300));
-    //     series.getData().add(new XYChart.Data<>("February", 450));
-    //     series.getData().add(new XYChart.Data<>("March", 370));
-    //     series.getData().add(new XYChart.Data<>("April", 520));
-    //     series.getData().add(new XYChart.Data<>("May", 410));
+        LocalDate date = LocalDate.now();
+        series.setName(String.format("%d", date.getYear()));
+        System.out.println(spendingPerMonth);
 
-    //     barChart.getData().add(series);
-    //     barChart.setTitle("Monthly Spending");
-    // }
+        for (Month month : Month.values()) {
+            double amount = spendingPerMonth.getOrDefault(month, 0.0);
+            String monthLabel = month.getDisplayName(TextStyle.SHORT, Locale.getDefault());
+            series.getData().add(new XYChart.Data<>(monthLabel, amount));
+        }        
+        
+        barChart.getData().add(series);
+        barChart.setTitle("Monthly Spending");
+    }
 
     @FXML
     private void addTransaction() {
@@ -200,9 +210,14 @@ public class ApplicationController {
         
         transactionService.addTransaction(transaction);
 
+        updateData(transaction);
+    }
+
+    private void updateData(Transaction transaction) {
         recentTransactionTableView.getItems().add(transaction);
-        updateTotalAmount(amount, transaction.getDate());
-        updateSpendingPerCategory(category, amount);
+        updateTotalAmount(transaction.getAmount(), transaction.getDate());
+        updateSpendingPerCategory(transaction.getCategory(), transaction.getAmount());
+        updateSpendingPerMonth(transaction);
     }
 
     private void updateTotalAmount(double amount, LocalDate date) {
@@ -225,4 +240,17 @@ public class ApplicationController {
 
         categorySpendingList.setAll(categorySpendingMap.values());
     }
+
+    private void updateSpendingPerMonth(Transaction transaction) {
+        Month month = transaction.getDate().getMonth();
+        double amount = transaction.getAmount();
+    
+        if (spendingPerMonth.containsKey(month)) {
+            double currentTotal = spendingPerMonth.get(month);
+            spendingPerMonth.put(month, currentTotal + amount);
+        } else {
+            spendingPerMonth.put(month, amount);
+        }
+    }
+    
 }

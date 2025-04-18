@@ -82,14 +82,14 @@
         <Button text="refresh Chart Data" fx:id="refreshChartData"/>
         <HBox spacing="10" alignment="CENTER">
             <PieChart fx:id="pieChart" prefWidth="600" prefHeight="200"/>
-            <!-- <BarChart fx:id="barChart" prefWidth="600" prefHeight="200">
+            <BarChart fx:id="barChart" prefWidth="600" prefHeight="200">
                 <xAxis>
                     <CategoryAxis label="Month"/>
                 </xAxis>
                 <yAxis>
                     <NumberAxis label="Total Spent (€)"/>
                 </yAxis>
-            </BarChart> -->
+            </BarChart>
         </HBox>
     </Tab>
 
